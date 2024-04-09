@@ -4,11 +4,11 @@ import {Button} from "@nextui-org/react";
 import Link from 'next/link'
 const LoginForm = () => {
   return (
-    <div className=" w-full h-full flex flex-col p-10">
+    <div className=" w-full h-full flex flex-col gap-2 p-10">
       {/* <h2 className=" min-h-2/10 pb-5 mb-5 text-left font-extrabold  font-serif text-3xl">Already A member <Link>Sign In</Link></h2> */}
       <h2 className=" min-h-2/10 pb-2 md:pb-5 mb-10 md:mb-20 text-left font-extrabold  font-Barlow text-3xl">Sign Up Dribble</h2>
       <form>
-        <div className=" w-full min-h-7/10 flex flex-col items-center justify-center gap-6 lg:gap-20">
+        <div className=" w-full min-h-7/10 lg:px-20 md:px-10 flex flex-col items-center justify-center gap-3 lg:gap-10">
           <div className="flex flex-col md:flex md:flex-row gap-4 w-full items-center justify-center">
             <Input
               isRequired

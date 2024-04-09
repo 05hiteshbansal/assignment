@@ -1,11 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
+
 const Modes = ({image,title,description}) => {
   return (
-    <div className='w-3/10 h-full p-4 bg-black flex flex-col text-white  hover:bg-white hover:text-orange-700'>
-      <Image src={image} width={image.width} height={image.height} className='h-full w-full object-cover rounded-lg' alt='Creative'/>
-    <div className=' text-[30px] text-center'>{title}</div>
-    <div className=' text-center text-[20px]'>{description}</div>
+    <div className='md:w-[350px] md:h-[350px] h-[300px] w-[250px] flex flex-col justify-center items-center group'>
+      <Image src={image} width={image.width} height={image.height} className='h-1/2 w-2/3 object-cover rounded-lg group-hover:-translate-y-unit-10 ' alt='Creative'/>
+    <div className=' text-[20px] text-center group-hover:-translate-y-unit-10  '>{title}</div>
+    <div className=' text-center text-[15px] hidden rounded-lg group-hover:-translate-y-unit-2 group-hover:flex '>{description}</div>
+
     </div>
   )
 }
