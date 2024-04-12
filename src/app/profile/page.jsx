@@ -6,7 +6,7 @@ import Image from "next/image"
 const Page = () => {
   return (
     <div className=' w-full min-h-screen flex flex-col justify-center items-center ' >
-    <div className='md:w-3/5 w-full h-full flex flex-col gap-5  justify-evenly items-center'>
+    <div className='md:w-3/5 w-full h-full flex flex-col gap-10 justify-evenly items-center'>
         <div className='text-lg md:text-2xl lg:text-4xl font-bold font-sans'>Welcome! Let's create Your Profile</div>
         <div className='text-lg md:text-xl lg:text-2xl font-sans'>Let other get you know better you can do these later</div>
         <div className='w-full'>
