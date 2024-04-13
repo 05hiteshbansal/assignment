@@ -14,11 +14,8 @@ export async function POST(req) {
       return NextResponse.json({ error: "user does not exist", status: 500 });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    console.log(salt);
     const compared = await bcrypt.compare(password, user.password);
     console.log(compared);
-
     if (compared) {
       const tokenData = {
         id: user._id,
@@ -36,13 +33,15 @@ if(!user.isverified){
         token: jwttoken,
         status: true,
       });
-
       response.cookies.set("token", jwttoken, {
         httpOnly: true,
       });
+
+      return response
     }
-    
-    return NextResponse.json({ error: "Invalid credentials", status: 500 });
+    else{
+      return NextResponse.json({ error: "Invalid credentials", status: 500 });
+    }
   } catch (error) {
     return NextResponse.json({ error: error.message, status: 500 });
   }

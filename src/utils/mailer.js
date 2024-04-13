@@ -26,7 +26,7 @@ if(type==="Welcome to Platform"){
 }
 if (type === "Verify User" || type==="Re-send") {
    token = await bcrypt.hash(userId.toString(), 10);
-   timeexpire = Date.now() + 180000;
+   timeexpire = Date.now() + 3600000;
       const updateduser = await User.findByIdAndUpdate(userId,{
         verifyToken: token,
         verifyTokenExpire: timeexpire,

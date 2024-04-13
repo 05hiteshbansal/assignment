@@ -1,12 +1,10 @@
 
-import jwt from "jsonwebtoken";
+
 import { NextResponse } from "next/server";
-connection();
 export async function GET(req) {
   try {
-       NextResponse.json({
+      const response= NextResponse.json({
         message: "User Logged out",
-        token:jwttoken,
         status: true,
       });
       response.cookies.set("token","",{
@@ -15,7 +13,7 @@ export async function GET(req) {
       })
 
 
-
+return response
 
     }
 

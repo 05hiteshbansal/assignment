@@ -11,7 +11,8 @@ export async function POST(req) {
     const user = await User.findById(userid);
     const currentUTCDate = new Date().getTime()
     const expireDate=new Date(user.verifyTokenExpire).getTime()
-
+console.log(currentUTCDate , " ",expireDate)
+console.log(token , " ",user.verifyToken)
     if(user.verifyToken==token &&  currentUTCDate<expireDate){
       user.isverified=true;
       user.verifyToken=undefined;
