@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import registerImage from "@/media/loginimg.jpg";
-import RegisterForm from "@/components/RegisterForm";
+import LoginForm from "@/components/LoginForm";
 const Home = () => {
   return (
     <div className="flex flex-row w-full h-screen">
@@ -16,7 +16,7 @@ const Home = () => {
         />
       </div>
       <div className="w-full h-full">
-        <RegisterForm />
+        <LoginForm />
       </div>
     </div>
   );

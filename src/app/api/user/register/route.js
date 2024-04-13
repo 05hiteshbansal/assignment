@@ -27,10 +27,10 @@ const userindb = await usercreate.save()
 
 
 // email verification
-
-const verifyedUser=await sendEmail(userindb.email ,"Verify User" , userindb._id);
-return NextResponse.json({"user": userindb})
-
+const verifyedUser=await sendEmail(userindb.email ,"Welcome to Platform" , userindb._id);
+return NextResponse.json({user: userindb,
+    message: "User is Registered successfully",
+    status: true,})
     } catch (error) {
         return NextResponse.json({"error": error.message, "status":500})
     }

@@ -11,8 +11,12 @@ export async function POST(req) {
     const user = await User.findById(userid);
     const currentUTCDate = new Date().getTime()
     const expireDate=new Date(user.verifyTokenExpire).getTime()
-    console.log( currentUTCDate , expireDate)
-    if(user.verifyToken==token &&  currentUTCDate<=user.verifyTokenExpire){
+
+    if(user.verifyToken==token &&  currentUTCDate<expireDate){
+      user.isverified=true;
+      user.verifyToken=undefined;
+      user.verifyTokenExpire=undefined;
+      await user.save();
         return NextResponse.json({ "message": "Verification is done Successfully", status: 200 });
     }
     return NextResponse.json({ "message": "Token Expire", status: 500 });

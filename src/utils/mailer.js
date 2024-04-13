@@ -16,16 +16,26 @@ const  sendEmail = async (emailtosend, type, userId) => {
     });
 
     //if (type === "Verify User" || type==="Re-send") {
-      const token = await bcrypt.hash(userId.toString(), 10);
-      const timeexpire = Date.now() + 180000;
+      let token 
+      let timeexpire 
+      let htmlused
+if(type==="Welcome to Platform"){
+  token=undefined
+  timeexpire=undefined
+  htmlused=`<p>Welcome To the platform</p>`
+}
+if (type === "Verify User" || type==="Re-send") {
+   token = await bcrypt.hash(userId.toString(), 10);
+   timeexpire = Date.now() + 180000;
       const updateduser = await User.findByIdAndUpdate(userId,{
         verifyToken: token,
         verifyTokenExpire: timeexpire,
       });
+     htmlused=`<p>Please click to verify user <a href='http://localhost:3000/verify?token=${userId}'> Click </a> and Paste ${token} to verify </p>`
+}
 //const htmlused
-console.log(updateduser);
+//console.log(updateduser);
 //}
-const htmlused=`<p>Please click to verify user <a href='http://localhost:3000/verify?token=${userId}'> Click </a> and Paste ${token} to verify </p>`
 
 
     const mail = {
