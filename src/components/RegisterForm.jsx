@@ -19,7 +19,7 @@ const RegisterForm = () => {
 const onregister=async()=>{
   try {
     toast.loading("loading");
-     const data= await axios.post("http://localhost:3000/api/user/register" , user)
+     const data= await axios.post(`${process.env.DOMAIN}/api/user/register` , user)
     console.log(data.data.message);
     toast.dismiss()
     if(data.data.success){

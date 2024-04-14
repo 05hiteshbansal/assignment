@@ -26,7 +26,7 @@ const onverify=async()=>{
       userid:search
     }
     console.log(verifyData)
-     const data= await axios.post("http://localhost:3000/api/verify" ,verifyData)
+     const data= await axios.post(`${process.env.DOMAIN}/api/verify` ,verifyData)
     console.log(data.data.message);
     toast.dismiss()
     if(data.data.success){
@@ -47,7 +47,7 @@ const onverify=async()=>{
 
   return (<>
       <Toaster/>
-    <div className=" flex flex-col h-screen w-full justify-center items-center gap-4  text-md md:text-2xl p-5 font-Barlow">
+    <div className=" flex flex-col h-screen w-full  items-center gap-4  text-md md:text-2xl p-5 font-Barlow">
       <div className="text-md md:text-xl lg:text-2xl text-left font-bold  mb-4 ">Verify Your Email</div>
       <div className="md:w-[150px] w-[70px] h-[70px]  md:h-[150px]  ">
         <Image

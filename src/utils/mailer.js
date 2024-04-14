@@ -31,7 +31,7 @@ if (type === "Verify User" || type==="Re-send") {
         verifyToken: token,
         verifyTokenExpire: timeexpire,
       });
-     htmlused=`<p>Please click to verify user <a href='http://localhost:3000/verify?token=${userId}'> Click </a> and Paste ${token} to verify </p>`
+     htmlused=`<p>Please click to verify user <a href=${process.env.DOMAIN}/verify?token=${userId}'> Click </a> and Paste ${token} to verify </p>`
 }
 //const htmlused
 //console.log(updateduser);
