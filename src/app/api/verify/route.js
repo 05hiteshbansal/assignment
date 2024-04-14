@@ -1,7 +1,6 @@
 import connection from "@/dbconfig/connection";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
-import sendEmail from "@/utils/mailer";
 connection();
 
 export async function POST(req) {

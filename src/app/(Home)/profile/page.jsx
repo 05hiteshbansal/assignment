@@ -28,7 +28,7 @@ useEffect(()=>{
   }
   fetchData();
 }
-,[])
+)
 const saveData=async()=>{
   
   try{
@@ -118,3 +118,6 @@ const saveData=async()=>{
 }
 
 export default Page
+
+
+

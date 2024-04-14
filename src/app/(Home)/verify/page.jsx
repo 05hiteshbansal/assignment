@@ -1,8 +1,8 @@
 "use client"
+import { Suspense } from 'react'
 import React from "react";
 import Email from "@/media/mail.png";
 import Image from "next/image";
-import Link from 'next/link'
 import axios from "axios";
 import { useState } from "react";
 import {Toaster, toast} from 'react-hot-toast';
@@ -42,6 +42,24 @@ const onverify=async()=>{
   }
 }
 
+const resend=async()=>{
+  try {
+    toast.loading("loading");
+    const data= await axios.post(`${process.env.DOMAIN}/api/reverify`)
+    console.log(data.data.message);
+    toast.dismiss()
+    if(data.data.success){
+      toast.success(data.data.message)
+      router.push("/mode")
+    }
+    else{
+      toast.error(data.data.message)
+    }
+  } catch (error) {
+    console.log(error)   
+    toast.error(error.message)  
+  }
+}
 
 
 
@@ -68,8 +86,7 @@ const onverify=async()=>{
               className="w-full selection:text-white selection:bg-black "/>
               <Button size="lg" color="danger" variant="ghost" className="w-1/5 "  onClick={onverify}>Verify</Button>
               </div>
-      <div className="text-sm md:text-md lg:text-lg text-left font-sans  ">Didn't Receive Change Your <Link href='/'>Email</Link></div>
-      <div className="text-sm md:text-md lg:text-lg text-left font-sans  ">To resent verificaton mail <Link href='/'>Email</Link></div>
+      <div className="text-sm md:text-md lg:text-lg text-left font-sans  ">To resent verificaton mail <button className=" text-blue-600 font-normal underline-offset-1" onClick={resend}>Resend</button></div>
       <div className="text-sm md:text-md lg:text-lg text-left font-sans  ">Click on confirmation Link Received on Mail</div>
     </div>
   </>
@@ -77,3 +94,14 @@ const onverify=async()=>{
 };
 
 export default Page;
+
+
+
+export function Searchbar() {
+  return (
+    // You could have a loading skeleton as the `fallback` too
+    <Suspense>
+     <Page/>
+    </Suspense>
+  )
+}
