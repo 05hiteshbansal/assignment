@@ -26,7 +26,7 @@ const onverify=async()=>{
       userid:search
     }
     console.log(verifyData)
-     const data= await axios.post(`${process.env.DOMAIN}/api/verify` ,verifyData)
+     const data= await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verify` ,verifyData)
     console.log(data.data.message);
     toast.dismiss()
     if(data.data.success){
