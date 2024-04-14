@@ -1,38 +1,21 @@
 import connection from "@/dbconfig/connection";
 import UserProfile from "@/models/userProfile";
+import { getDataFromToken } from "@/utils/GetTokenData";
 import { NextResponse } from "next/server";
 connection();
-export async function POST(req) {
+export async function GET(req) {
   try {
-    const { userPhoto, location, userid } = await req.json();
-    console.log(userPhoto, location, userid);
+    const userid=getDataFromToken(req)
     const user = await UserProfile.findOne({ userid: userid });
-    if (user) {
-      console.log(user , "Prev");
-      user.location = location;
-      user.userPhoto = userPhoto;
-      const newuserupdated = await user.save()
-      console.log(newuserupdated,"updated")
-
+    user.password=undefined
       return NextResponse.json({
-        message: "user updated successfully",
-        user: newuserupdated,
+        message: "User information",
+        user: user,
         status: 200,
+        success:true
       });
     }
-
-    const userupdated = new UserProfile({
-      userid,
-      userPhoto,
-      location,
-    });
-    const newuserupdated = await userupdated.save();
-    return NextResponse.json({
-      message: "user updated successfully",
-      user: newuserupdated,
-      status: 200,
-    });
-  } catch (error) {
-    return NextResponse.json({ error: error.message, status: 500 });
+ catch (error) {
+    return NextResponse.json({ message: error.message, status: 500 , success:false});
   }
 }

@@ -1,12 +1,16 @@
+"use client"
+
 import React from "react";
 // import deciptionImage from "@/media/login1.jpg";
 import Modes from "@/components/Modes";
 import p1 from "@/media/p1.jpg";
 import p2 from "@/media/p2.jpg";
 import p3 from "@/media/p3.jpg";
+import { useRouter } from 'next/navigation'
 import {Button} from '@nextui-org/react'
 import { RadioGroup, Radio } from "@nextui-org/react";
 const Page = () => {
+  const router = useRouter()
   return (
     <div className=" flex flex-col  justify-center gap-3 items-center w-screen min-h-screen  ">
       <div className=" text-lg md:text-2xl lg:text-4xl font-bold font-sans">What Brings You to Dribble ?</div>
@@ -41,7 +45,7 @@ const Page = () => {
           </Radio>
         </div>
       </RadioGroup>
-      <Button  size="lg" color="danger" variant="ghost" className="w-1/5 ">Save</Button>
+      <Button  size="lg" color="danger" variant="ghost" className="w-1/5 " onClick={()=>router.push("/profile")}>Save</Button>
     </div>
   );
 };

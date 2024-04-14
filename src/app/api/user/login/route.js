@@ -8,10 +8,13 @@ connection();
 export async function POST(req) {
   try {
     const { email, password } = await req.json();
+    if(!email || !password){
+      return NextResponse.json({ message: "enter all Fields", status: 400,success:false });
+    }
     console.log(email);
     const user = await User.findOne({ email: email });
     if (!user) {
-      return NextResponse.json({ error: "user does not exist", status: 500 });
+      return NextResponse.json({ message: "user does not exist", status:400  ,success:false});
     }
 
     const compared = await bcrypt.compare(password, user.password);
@@ -31,7 +34,7 @@ if(!user.isverified){
         user: user,
         message: "User is LogIn successfully",
         token: jwttoken,
-        status: true,
+        success:true
       });
       response.cookies.set("token", jwttoken, {
         httpOnly: true,
@@ -40,9 +43,9 @@ if(!user.isverified){
       return response
     }
     else{
-      return NextResponse.json({ error: "Invalid credentials", status: 500 });
+      return NextResponse.json({ message: "Invalid credentials", status: 500 ,success:false });
     }
   } catch (error) {
-    return NextResponse.json({ error: error.message, status: 500 });
+    return NextResponse.json({ message: error.message, status: 500 ,success:false });
   }
 }
