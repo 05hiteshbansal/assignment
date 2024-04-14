@@ -9,7 +9,7 @@ const router=useRouter();
 const logout=async()=>{
 try {
     toast.loading("loading");
-    const data=await axios.get(`${process.env.DOMAIN}/api/user/logout`);
+    const data=await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/logout`);
     toast.dismiss();
     console.log(data.data);
     if(data.data.success){

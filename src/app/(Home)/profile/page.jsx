@@ -16,21 +16,19 @@ const Page = () => {
   })
 useEffect(()=>{
   const fetchData= async()=>{
-    const prevuserdata= await axios.get(`${process.env.DOMAIN}/api/user/profileinfo`)
+    const prevuserdata= await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/profileinfo`)
     console.log(prevuserdata)
     if(prevuserdata.data.user){
       const previmage =prevuserdata.data.user.userPhoto || login
       const prevloc={location:prevuserdata.data.user.location|| " "}
       setimage(previmage)
       console.log(user.location)
-      setuser(user.location=prevloc.location)
+       setuser({...user, location:prevloc.location})
     }
   }
   fetchData();
-}
-)
+},[])
 const saveData=async()=>{
-  
   try{
 
     toast.loading("loading");
@@ -40,7 +38,7 @@ const saveData=async()=>{
         userPhoto:image
       }
       console.log(verifyData)
-       const data= await axios.post(`${process.env.DOMAIN}/api/user/profileupdate` ,verifyData)
+       const data= await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/profileupdate` ,verifyData)
       console.log(data.data.message);
       toast.dismiss()
       console.log(data.data)

@@ -16,7 +16,7 @@ const LoginForm = () => {
 const onLogin=async()=>{
   try {
     toast.loading("loading");
-     const data= await axios.post(`${process.env.DOMAIN}/api/user/login` , user)
+     const data= await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login` , user)
    // console.log(data.data.user.isverified);
     toast.dismiss()
     if(data.data.success){

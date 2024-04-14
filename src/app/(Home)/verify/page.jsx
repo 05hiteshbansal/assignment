@@ -45,7 +45,7 @@ const onverify=async()=>{
 const resend=async()=>{
   try {
     toast.loading("loading");
-    const data= await axios.post(`${process.env.DOMAIN}/api/reverify`)
+    const data= await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/reverify`)
     console.log(data.data.message);
     toast.dismiss()
     if(data.data.success){
