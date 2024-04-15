@@ -67,7 +67,7 @@ const onLogin=async()=>{
             className="w-3/5 md:w-full focus:border-red-800 outline-orange-700 selection:text-white selection:bg-black"
           />
 
-<Button size="lg" color="danger" variant="ghost" className="w-2/5 " onClick={onLogin} >Sign Up</Button>
+<Button size="lg" color="danger" variant="ghost" className="w-2/5 " onClick={onLogin} >Sign In</Button>
 <div className=" font-serif text-left text-lg">A New member <Link href='/' className="text-blue-500 hover:text-blue-800">Sign up</Link></div>
         </div>
 
