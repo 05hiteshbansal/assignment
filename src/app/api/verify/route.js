@@ -1,12 +1,14 @@
 import connection from "@/dbconfig/connection";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
+import { getDataFromToken } from "@/utils/GetTokenData";
 connection();
 
 export async function POST(req) {
   // if (req.method === "POST") {
   try {
-    const { userid,token } = await req.json();
+    const userid=getDataFromToken(req)
+    const {token } = await req.json();
     if(!token || !userid){
       return NextResponse.json({ message: "All Fields are required", status: 400,success:false });
     }

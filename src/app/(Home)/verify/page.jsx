@@ -7,12 +7,10 @@ import axios from "axios";
 import { useState } from "react";
 import {Toaster, toast} from 'react-hot-toast';
 import { Input, Button } from "@nextui-org/react";
-import { useSearchParams } from 'next/navigation'
+
 import { useRouter } from 'next/navigation'
 const Page = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const search = searchParams.get('token') || "";
   const[user,setuser]=useState({
     token:"",
   })
@@ -22,8 +20,7 @@ const onverify=async()=>{
     toast.loading("loading");
 
     const verifyData={
-      ...user,
-      userid:search
+      ...user
     }
     console.log(verifyData)
      const data= await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verify` ,verifyData)
@@ -50,7 +47,7 @@ const resend=async()=>{
     toast.dismiss()
     if(data.data.success){
       toast.success(data.data.message)
-      router.push("/mode")
+      // router.push("/mode")
     }
     else{
       toast.error(data.data.message)
@@ -95,13 +92,3 @@ const resend=async()=>{
 
 export default Page;
 
-
-
-export function Searchbar() {
-  return (
-    // You could have a loading skeleton as the `fallback` too
-    <Suspense>
-     <Page/>
-    </Suspense>
-  )
-}
