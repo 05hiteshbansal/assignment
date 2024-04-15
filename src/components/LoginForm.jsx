@@ -7,6 +7,7 @@ import Link from 'next/link'
 import axios from "axios";
 import {Toaster, toast} from 'react-hot-toast';
 import { useRouter } from 'next/navigation'
+
 const LoginForm = () => {
   const router = useRouter()
     const[user,setuser]=useState({
@@ -67,7 +68,7 @@ const onLogin=async()=>{
           />
 
 <Button size="lg" color="danger" variant="ghost" className="w-2/5 " onClick={onLogin} >Sign Up</Button>
-<div className=" font-serif text-left text-lg"> Already A member <Link href='/' className=" text-orange-900 hover:text-blue-800">Sign In</Link></div>
+<div className=" font-serif text-left text-lg">A New member <Link href='/' className="text-blue-500 hover:text-blue-800">Sign up</Link></div>
         </div>
 
       </form>

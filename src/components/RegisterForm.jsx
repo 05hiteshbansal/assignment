@@ -6,7 +6,9 @@ import {Button} from "@nextui-org/react";
 import Link from 'next/link'
 import axios from "axios";
 import {Toaster, toast} from 'react-hot-toast';
+import { useRouter } from 'next/navigation'
 const RegisterForm = () => {
+  const router = useRouter()
   const [buttonDisable,setbuttonDisable]=useState(false)
   const [loading,setLoading]=useState()
   const[user,setuser]=useState({
@@ -24,6 +26,7 @@ const onregister=async()=>{
     toast.dismiss()
     if(data.data.success){
       toast.success(data.data.message)
+      router.push("/login")
     }
     else{
       toast.error(data.data.error)
@@ -89,9 +92,8 @@ return (
           />
 
 <Button size="lg" color="danger" variant="ghost" className="w-2/5 " onClick={onregister} >Sign Up</Button>
-<div className=" font-serif text-left text-lg"> Already A member <Link href='/login' className=" text-orange-900 hover:text-blue-800">Sign In</Link></div>
+<div className=" font-serif text-left text-lg"> Already A member <Link href='/login' className="text-blue-500 hover:text-blue-800">Sign In</Link></div>
         </div>
-
       </form>
     </div>
   );

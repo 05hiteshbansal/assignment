@@ -1,5 +1,5 @@
 "use client"
-import { Suspense } from 'react'
+
 import React from "react";
 import Email from "@/media/mail.png";
 import Image from "next/image";
