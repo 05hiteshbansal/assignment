@@ -31,7 +31,7 @@ if (type === "Verify User" || type==="Re-send") {
         verifyToken: token,
         verifyTokenExpire: timeexpire,
       });
-     htmlused=`<p>Please click to verify user <a href=${process.env.NEXT_PUBLIC_API_URL}/verify'> Click </a> and Paste ${token} to verify </p>`
+     htmlused=`<p>Please click to verify user <a href=${process.env.NEXT_PUBLIC_API_URL}/verify> Click </a> and Paste ${token} to verify </p>`
 }
 //const htmlused
 //console.log(updateduser);
