@@ -14,14 +14,15 @@ const Page = () => {
   return (
     <div className=" flex flex-col  justify-center gap-3 items-center w-full min-h-screen  ">
       <div className=" text-lg md:text-2xl lg:text-4xl font-bold font-sans">What Brings You to Dribble ?</div>
-      <RadioGroup  className=' text-center text-black lg:text-lg md:text-md text-sm ' label="Select a Option Best Describes you ? You can choose other options too...">
+      <div className=" text-center text-black lg:text-lg md:text-md mb-10 text-sm ">Select a Option Best Describes you ? You can choose other options too...</div>
+      <RadioGroup>
         <div className="flex flex-col lg:px-20 md:px-9 md:py-2 lg:flex-row justify-center items-center">
           <Radio value="1" className="flex flex-col-reverse border-2 border-solid rounded-xl  my-5 md:m-5 hover:border-red-700">
             <Modes
               image={p1}
               title={"I am Designer Looking for sharing the Work"}
               description={
-                "Unlock endless opportunities to showcase your creativity and connect with clients worldwide. Join our platform to share your designs and collaborate with a global community of fellow designers. Expand your portfolio, gain exposure, and turn your passion into meaningful projects. Start sharing your talent today and let your designs speak volumes."
+                "Unlock endless opportunities to showcase your creativity and connect with clients worldwide. Join our platform to share your designs and collaborate with a global community of fellow designers. Expand your portfolio, gain exposure, and turn your passion into meaningful projects."
               }
             />
           </Radio>
